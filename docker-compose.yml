@@ -7,4 +7,4 @@ services:
     ports:
       - 18089:80
     volumes:
-      - ./:/opt
+      - ./src:/go/src
