@@ -5,8 +5,7 @@ import (
 	. "../../graphics"
 )
 
-func Renderer(g *Graphics) {
-	screen := g.GetScreen()
+func Renderer(screen *Image) {
 	lines := ""
 	for x := 0; x < screen.Width; x++ {
 		for y := 0; y < screen.Height; y++ {

@@ -1,12 +1,9 @@
-package game
+package main
 
 import (
 	"./app"
-	"../graphics"
 )
 
 func main() {
-	a := app.New()
-	a.Run()
-	a.Render(graphics.NewGraphics())
+	app.New().Run()
 }

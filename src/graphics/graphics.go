@@ -4,8 +4,8 @@ type Graphics struct {
 	screen *Image
 }
 
-func NewGraphics() *Graphics {
-	return &Graphics{NewImage(40, 40)}
+func NewGraphics(screen *Image) *Graphics {
+	return &Graphics{screen}
 }
 
 func (g *Graphics) DrawPixel(x, y int, pixel Pixel) {
@@ -26,7 +26,9 @@ func (g *Graphics) DrawChar(x, y int, char rune, ) {
 
 func (g *Graphics) DrawString(x, y int, str string) {
 	for _, char := range str {
-		g.DrawChar(x, y, char)
+		image := NewImageFromChar(char)
+		g.DrawImage(x, y, image)
+		x += image.Width
 	}
 }
 
