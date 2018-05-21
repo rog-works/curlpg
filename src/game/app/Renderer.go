@@ -7,8 +7,8 @@ import (
 
 func Renderer(screen *Image) {
 	lines := ""
-	for x := 0; x < screen.Width; x++ {
-		for y := 0; y < screen.Height; y++ {
+	for y := 0; y < screen.Height; y++ {
+		for x := 0; x < screen.Width; x++ {
 			lines += string(screen.PixelAt(x, y))
 		}
 		lines += "\n"

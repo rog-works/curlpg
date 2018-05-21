@@ -7,13 +7,21 @@ type Image struct {
 }
 
 func NewImage(width, height int) *Image {
-	return &Image{make([]Pixel, width * height), width, height}
+	image := &Image{make([]Pixel, width * height), width, height}
+	image.Clear()
+	return image
 }
 
 func NewImageFromChar(char rune) *Image {
 	image := &Image{make([]Pixel, 1), 1, 1}
 	image.SetPixel(0, 0, Pixel(char))
 	return image
+}
+
+func (image *Image) Clear() {
+	for i := 0; i < image.size(); i++ {
+		image.pixels[i] = Pixel([]rune(" ")[0])
+	}
 }
 
 func (image *Image) SetPixel(x, y int, pixel Pixel) {

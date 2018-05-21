@@ -23,7 +23,8 @@ func (app *Application) main() {
 }
 
 func (app *Application) render() {
-	app.g.DrawString(0, 0, "hoge")
+	app.g.DrawString(5, 0, "hoge")
+	app.g.DrawString(0, 1, "fuga")
 }
 
 func (app *Application) flip() {
