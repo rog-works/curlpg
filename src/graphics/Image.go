@@ -39,11 +39,11 @@ func (image *Image) PixelAt(x, y int) Pixel {
 }
 
 func (image *Image) toIndex(x, y int) int {
-	return y * image.Width + x;
+	return y * image.Width + x
 }
 
 func (image *Image) size() int {
-	return image.toIndex(image.Width, image.Height)
+	return image.Width * image.Height
 }
 
 func (image *Image) isInside(x, y int) bool {

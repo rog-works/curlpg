@@ -15,7 +15,7 @@ func (g *Graphics) DrawPixel(x, y int, pixel Pixel) {
 func (g *Graphics) DrawImage(x, y int, image *Image) {
 	for offsetX := 0; offsetX < image.Width; offsetX++ {
 		for offsetY := 0; offsetY < image.Height; offsetY++ {
-			g.DrawPixel(x + offsetX, y + offsetY, image.PixelAt(x, y))
+			g.DrawPixel(x + offsetX, y + offsetY, image.PixelAt(offsetX, offsetY))
 		}
 	}
 }
