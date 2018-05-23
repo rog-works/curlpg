@@ -1,15 +1,20 @@
 package app
 
-import . "../../graphics"
+import (
+	. "../../graphics"
+	. "../scenes"
+)
 
 type Application struct {
 	screen *Image
 	g *Graphics
+	scene *Scene
 }
 
 func New() *Application {
 	screen := NewImage(20, 5)
 	g := NewGraphics(screen)
+	scene := Scene.Factory('game')
 	return &Application{screen, g}
 }
 
@@ -20,11 +25,11 @@ func (app *Application) Run() {
 }
 
 func (app *Application) main() {
+	app.scene.Run()
 }
 
 func (app *Application) render() {
-	app.g.DrawString(5, 0, "hoge")
-	app.g.DrawString(0, 1, "fuga")
+	app.scene.Draw(app.g)
 }
 
 func (app *Application) flip() {
