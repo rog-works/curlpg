@@ -1,21 +1,21 @@
 package app
 
 import (
-	. "../../graphics"
-	. "../scenes"
+	"../graphics"
+	"../scenes"
 )
 
 type Application struct {
-	screen *Image
-	g *Graphics
-	scene *Scene
+	screen *graphics.Image
+	g *graphics.Graphics
+	scene scenes.Scene
 }
 
 func New() *Application {
-	screen := NewImage(20, 5)
-	g := NewGraphics(screen)
-	scene := Scene.Factory('game')
-	return &Application{screen, g}
+	screen := graphics.NewImage(20, 5)
+	g := graphics.NewGraphics(screen)
+	scene := scenes.Factory("boot")
+	return &Application{screen, g, scene}
 }
 
 func (app *Application) Run() {

@@ -2,10 +2,10 @@ package app
 
 import (
 	"fmt"
-	. "../../graphics"
+	"../graphics"
 )
 
-func Renderer(screen *Image) {
+func Renderer(screen *graphics.Image) {
 	lines := ""
 	for y := 0; y < screen.Height; y++ {
 		for x := 0; x < screen.Width; x++ {
