@@ -14,7 +14,7 @@ type Application struct {
 func New() *Application {
 	screen := graphics.NewImage(20, 5)
 	g := graphics.NewGraphics(screen)
-	scene := scenes.Factory("boot")
+	scene := scenes.Factory("game")
 	return &Application{screen, g, scene}
 }
 
