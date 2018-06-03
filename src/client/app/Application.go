@@ -3,12 +3,13 @@ package app
 import (
 	"../graphics"
 	"../scenes"
+	"../scenes/scene"
 )
 
 type Application struct {
 	screen *graphics.Image
 	g *graphics.Graphics
-	scene scenes.Scene
+	scene scene.Scene
 }
 
 func New() *Application {

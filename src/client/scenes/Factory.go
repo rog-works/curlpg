@@ -1,6 +1,8 @@
 package scenes
 
-func Factory(key string) Scene {
+import "./scene"
+
+func Factory(key string) scene.Scene {
 	if (key == "game") {
 		return &GameScene{}
 	}

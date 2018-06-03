@@ -1,8 +1,8 @@
-package scenes
+package scene
 
-import "../graphics"
+import "../../graphics"
 
 type Scene interface {
-	Run()
+	Run() bool
 	Draw(g *graphics.Graphics)
 }
