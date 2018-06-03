@@ -6,14 +6,6 @@ import (
 	"./game"
 )
 
-type states int
-
-const (
-	Init states = iota
-	Main
-	Release
-)
-
 type GameScene struct {
 	state states
 	scenes []scene.Scene
@@ -30,13 +22,13 @@ func (gs *GameScene) Push(key string) {
 
 func (gs *GameScene) Run() bool {
 	if (gs.state == Init) {
-		gs.init()
+		return gs.init()
 	} else if (gs.state == Main) {
-		gs.main()
+		return gs.main()
 	} else if (gs.state == Release) {
-		gs.release()
+		return gs.release()
 	}
-	return true
+	return false
 }
 
 func (gs *GameScene) Draw(g *graphics.Graphics) {
@@ -49,13 +41,14 @@ func (gs *GameScene) setState(next states) {
 	gs.state = next
 }
 
-func (gs *GameScene) init() {
+func (gs *GameScene) init() bool {
 	gs.factory = game.NewFactory(gs)
 	gs.Push("title")
 	gs.setState(Main)
+	return true
 }
 
-func (gs *GameScene) main() {
+func (gs *GameScene) main() bool {
 	for i := len(gs.scenes) - 1; i >= 0; i-- {
 		if !gs.scenes[i].Run() {
 			gs.scenes = gs.scenes[:i]
@@ -65,8 +58,10 @@ func (gs *GameScene) main() {
 	if len(gs.scenes) == 0 {
 		gs.setState(Release)
 	}
+
+	return true
 }
 
-func (gs *GameScene) release() {
-
+func (gs *GameScene) release() bool {
+	return false
 }
