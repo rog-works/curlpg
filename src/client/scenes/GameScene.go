@@ -20,6 +20,10 @@ type GameScene struct {
 	factory *game.Factory
 }
 
+func New() scene.Scene {
+	return &GameScene{}
+}
+
 func (gs *GameScene) Push(key string) {
 	gs.scenes = append(gs.scenes, gs.factory.Create(key))
 }
@@ -33,6 +37,12 @@ func (gs *GameScene) Run() bool {
 		gs.release()
 	}
 	return true
+}
+
+func (gs *GameScene) Draw(g *graphics.Graphics) {
+	for _, scene := range gs.scenes {
+		scene.Draw(g)
+	}
 }
 
 func (gs *GameScene) setState(next states) {
@@ -59,10 +69,4 @@ func (gs *GameScene) main() {
 
 func (gs *GameScene) release() {
 
-}
-
-func (gs *GameScene) Draw(g *graphics.Graphics) {
-	for _, scene := range gs.scenes {
-		scene.Draw(g)
-	}
 }
